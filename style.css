@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    clear: both;
+}
+
+p {
+    max-width: 600px;
+}
+
+kbd {
+    background-color:beige;
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+/* message stuff */
+#message {
+    font-weight: bold;
+}
+
+#message.success {
+    color: green;
+}
+
+#message.error {
+    color: red;
+}
+
+/* map iframe */
+#omap {
+    float: left;
+    width: 40%;
+    min-height: 400px;
+    margin: 10px;
+    border: 0px;
+    max-width: 600px;
+}
+
+#resultTags {
+    float: left;
+    min-width: 400px;
+}
+
+#resultHistory {
+    float: left;
+    min-width: 400px;
+}
+
+/* table stuff */
+table {
+    /* width: 100%; */
+    border-collapse: collapse;
+    margin: 10px;
+    min-width: 400px;
+    max-width: 600px;
+  }
+  
+  th {
+    background-color: lightgrey;
+    padding: 5px;
+    text-align: left;
+  }
+  
+  td {
+    border: 1px solid lightgrey;
+    padding: 8px;
+    text-align: left;
+  }
+  

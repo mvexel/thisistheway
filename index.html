@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="This is the way">
+    <meta property="og:description" content="Get useful information about any OSM feature.">
+    <meta property="og:image" content="https://way.osm.lol/morton.gif">
+    <meta property="og:url" content="https://way.osm.lol/">  
+    <title>This is the way</title>
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1><a href="/">This is the way</a></h1>
+    <p>find out things about a way (or a node or relation) in OpenStreetMap. 
+        <br /><small><a href="about.html">About this</a></small>
+    </p>
+    <p id="message"></p>
+    <p><small>Accepted input: n123456, w123456, r123456, node/123456, way/123456, relation/123456.</small></p>
+    <input type="text" id="userInput" placeholder="for example: relation/2342342" size="50" onkeypress="confirm(event)">
+    <button type="button" id="goButton" onclick="fetch()">GO</button>
+    <hr>
+    <iframe id="omap"></iframe>
+    <div id="result">
+        <h2 id="resultHeader"></h2>
+        <div id="resultMain"></div>
+        <div id="resultTags"></div>
+        <div id="resultHistory"></div>
+    </div>
+</body>
+
+</html>
