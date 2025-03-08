@@ -6,28 +6,72 @@
     <meta property="og:title" content="This is the way">
     <meta property="og:description" content="Get useful information about any OSM feature.">
     <meta property="og:image" content="https://way.osm.lol/morton.gif">
-    <meta property="og:url" content="https://way.osm.lol/">  
+    <meta property="og:url" content="https://way.osm.lol/">
     <title>This is the way</title>
-    <script src="/script.js"></script>
+    <script src="/script.js" defer></script>
     <link rel="stylesheet" href="/style.css">
+    <script>
+        // Handle direct URL access
+        document.addEventListener('DOMContentLoaded', function() {
+            const path = window.location.pathname;
+            const match = path.match(/\/(node|way|relation)\/(\d+)/);
+            if (match) {
+                const type = match[1];
+                const id = match[2];
+                const input = document.getElementById('userInput');
+                input.value = `${type}/${id}`;
+                fetch();
+            }
+        });
+
+        function openTab(tabName) {
+            // Hide all tabcontent
+            const tabcontent = document.getElementsByClassName("tabcontent");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remove active class from all tablinks
+            const tablinks = document.getElementsByClassName("tablink");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 </head>
 
 <body>
-    <h1><a href="/">This is the way</a></h1>
-    <p>find out things about a way (or a node or relation) in OpenStreetMap. 
-        <br /><small><a href="about.html">About this</a></small>
+    <h1><a href="/" style="color: #58a6ff;">This is the way</a></h1>
+    <p>find out things about a way (or a node or relation) in OpenStreetMap.
+        <br /><small><a href="/about.html">About this</a></small>
     </p>
     <p id="message"></p>
     <p><small>Accepted input: n123456, w123456, r123456, node/123456, way/123456, relation/123456.</small></p>
     <input type="text" id="userInput" placeholder="for example: relation/2342342" size="50" onkeypress="confirm(event)">
     <button type="button" id="goButton" onclick="fetch()">GO</button>
     <hr>
-    <iframe id="omap"></iframe>
-    <div id="result">
-        <h2 id="resultHeader"></h2>
-        <div id="resultMain"></div>
-        <div id="resultTags"></div>
-        <div id="resultHistory"></div>
+    <div class="tabs">
+        <button class="tablink" onclick="openTab('map')">Map</button>
+        <button class="tablink active" onclick="openTab('details')">Details</button>
+    </div>
+    
+    <div id="map" class="tabcontent">
+        <iframe id="omap" loading="lazy"></iframe>
+    </div>
+    
+    <div id="details" class="tabcontent active">
+        <div id="result">
+            <h2 id="resultHeader"></h2>
+            <div id="resultMain" class="full-width"></div>
+            <div class="table-container">
+                <div id="resultTags" class="table-column"></div>
+                <div id="resultHistory" class="table-column"></div>
+            </div>
+        </div>
     </div>
 </body>
 
