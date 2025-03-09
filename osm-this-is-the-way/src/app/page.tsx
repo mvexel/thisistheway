@@ -70,6 +70,7 @@ export default function Home() {
               versions={history.elements}
               selectedVersionIndex={selectedVersionIndex}
               onSelectVersion={setSelectedVersionIndex}
+              debugMode={debugMode}
             />
 
             {selectedVersionIndex !== null && selectedVersionIndex < history.elements.length - 1 && (
