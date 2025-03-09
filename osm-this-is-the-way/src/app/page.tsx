@@ -21,35 +21,17 @@ export default function Home() {
     setLoading(true);
     setError(null);
 
-    const handleFetchHistory = async (elementType: string, elementId: string) => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        // Store the raw API response for debugging
-        const response = await fetchOSMHistory(elementType, elementId);
-        setApiResponse(response);
-        setHistory(response);
-        // Select the latest version by default
-        setSelectedVersionIndex(response.elements.length > 1 ? response.elements.length - 2 : null);
-      } catch (err) {
-        setError(`Failed to fetch history: ${err instanceof Error ? err.message : String(err)}`);
-        setHistory(null);
-        setApiResponse(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     try {
-      // We'll implement this function later
-      const historyData = await fetchOSMHistory(elementType, elementId);
-      setHistory(historyData);
+      // Store the raw API response for debugging
+      const response = await fetchOSMHistory(elementType, elementId);
+      setApiResponse(response);
+      setHistory(response);
       // Select the latest version by default
-      setSelectedVersionIndex(historyData.elements.length > 1 ? historyData.elements.length - 2 : null);
+      setSelectedVersionIndex(response.elements.length > 1 ? response.elements.length - 2 : null);
     } catch (err) {
       setError(`Failed to fetch history: ${err instanceof Error ? err.message : String(err)}`);
       setHistory(null);
+      setApiResponse(null);
     } finally {
       setLoading(false);
     }

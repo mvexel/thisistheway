@@ -137,8 +137,9 @@ export default function Timeline({ versions, selectedVersionIndex, onSelectVersi
             </div>
 
 
-            <TimelineDebug versions={sortedVersions} clusters={clusteredVersions} />
-
+            {debugMode && (
+                <TimelineDebug versions={sortedVersions} clusters={clusteredVersions} />
+            )}
         </div>
     );
 }
