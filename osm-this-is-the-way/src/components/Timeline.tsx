@@ -12,7 +12,7 @@ interface TimelineProps {
     debugMode?: boolean;
 }
 
-export default function Timeline({ versions, selectedVersionIndex, onSelectVersion }: TimelineProps) {
+export default function Timeline({ versions, selectedVersionIndex, onSelectVersion, debugMode }: TimelineProps) {
     const timelineRef = useRef<HTMLDivElement>(null);
     const [clusteredVersions, setClusteredVersions] = useState<Array<{ index: number, size: number }>>([]);
 
@@ -135,6 +135,7 @@ export default function Timeline({ versions, selectedVersionIndex, onSelectVersi
                     </div>
                 )}
             </div>
+
 
             <TimelineDebug versions={sortedVersions} clusters={clusteredVersions} />
 
