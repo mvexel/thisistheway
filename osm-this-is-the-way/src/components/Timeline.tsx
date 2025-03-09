@@ -91,7 +91,7 @@ export default function Timeline({ versions, selectedVersionIndex, onSelectVersi
                 ref={timelineRef}
                 className="relative h-16 bg-gray-200 rounded-full mb-4"
             >
-                <div className="absolute top-0 left-0 w-full h-full flex items-center">
+                <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
                     {clusteredVersions.map(({ index, size }) => {
                         const version = sortedVersions[index];
                         const versionTime = new Date(version.timestamp).getTime();
@@ -107,7 +107,7 @@ export default function Timeline({ versions, selectedVersionIndex, onSelectVersi
                         return (
                             <button
                                 key={`${version.type}-${version.id}-v${version.version}`}
-                                className={`absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full ${dotSize} 
+                                className={`absolute transform -translate-x-1/2 rounded-full ${dotSize} 
                   ${index === selectedVersionIndex ? 'bg-blue-600 ring-4 ring-blue-200' : 'bg-blue-400 hover:bg-blue-500'}`}
                                 style={{ left: `${position}%` }}
                                 onClick={() => onSelectVersion(index)}
